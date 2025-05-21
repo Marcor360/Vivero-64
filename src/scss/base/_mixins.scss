@@ -1,0 +1,54 @@
+@use "sass:color";
+@use "variables" as v;
+
+// Media Queries
+@mixin telefono {
+    @media (min-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+// Flexbox
+@mixin flex($direccion: row, $justify: flex-start, $align: stretch) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// Grid
+@mixin grid($columnas, $gap: 2rem) {
+    display: grid;
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $gap;
+}
+
+// Botones
+@mixin boton($color: v.$principal, $colorTexto: v.$claro) {
+    display: inline-block;
+    background-color: $color;
+    color: $colorTexto;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: color.adjust($color, $lightness: 10%);
+    }
+}

@@ -1,0 +1,70 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.Exponentes {
+    padding: 5rem 0;
+    background-color: v.$principal;
+
+    h2 {
+        color: v.$claro;
+        margin-bottom: 4rem;
+    }
+
+    .expositores {
+        background-color: v.$claro;
+        border-radius: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 3rem;
+        overflow: hidden;
+
+        @include m.tablet {
+            @include m.flex(row, space-between, stretch);
+        }
+
+        img {
+            width: 100%;
+            height: 30rem;
+            object-fit: cover;
+
+            @include m.tablet {
+                width: 40%;
+                height: auto;
+            }
+        }
+
+        .tarjeta-contenido {
+            padding: 2rem;
+
+            @include m.tablet {
+                width: 60%;
+            }
+
+            h2 {
+                color: v.$principal;
+                font-size: 2.4rem;
+                text-align: left;
+                margin-bottom: 1.5rem;
+            }
+
+            p {
+                margin-bottom: 2rem;
+                color: v.$principal;
+            }
+
+            .plantas-especialidad {
+                @include m.flex(row, flex-start, center);
+                flex-wrap: wrap;
+                gap: 1rem;
+
+                .planta-tag {
+                    background-color: v.$iconos;
+                    color: v.$principal;
+                    font-weight: bold;
+                    padding: 0.5rem 1rem;
+                    border-radius: 2rem;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

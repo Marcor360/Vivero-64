@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { glob } from 'glob'
-import { src, dest, watch, series } from 'gulp'
+import { src, dest, watch, series, parallel } from 'gulp'
 import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import concat from 'gulp-concat'
@@ -13,7 +13,21 @@ const sass = gulpSass(dartSass)
 
 const paths = {
     scss: 'src/scss/**/*.scss',
-    js: 'src/js/**/*.js'
+    js: 'src/js/**/*.js',
+    img: 'src/img/**/*'
+}
+
+// Asegúrate de que las carpetas de destino existan
+function createBuildDirs(done) {
+    const dirs = ['./build', './build/css', './build/js', './build/img'];
+
+    dirs.forEach(dir => {
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+    });
+
+    done();
 }
 
 export function css(done) {
@@ -71,12 +85,23 @@ function procesarImagenes(file, outputSubDir) {
     }
 }
 
-
-
-export function dev() {
+export function watchFiles() {
     watch(paths.scss, css);
     watch(paths.js, js);
-    watch('src/img/**/*.{png,jpg}', imagenes)
+    watch(paths.img, imagenes);
 }
 
-export default series(js, css, imagenes, dev)
+// Define la tarea build que ejecuta todas las tareas de compilación
+export const build = series(
+    createBuildDirs,
+    parallel(css, js, imagenes)
+);
+
+// Define la tarea dev que primero construye y luego observa cambios
+export const dev = series(
+    build,
+    watchFiles
+);
+
+// Tarea por defecto
+export default dev;

@@ -4,13 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="build/css/app.css">
     <title>Carnívoras Fest</title>
 </head>
 
 <body>
     <header>
-        <a href="."><img src="src/img/Logo.png" alt="logo"></a>
+        <a href=".">
+            <picture>
+                <source media="(max-width: 600px)" srcset="build/img/Logo.webp" type="image/webp">
+                <source media="(min-width: 601px)" srcset="build/img/Logo.avif" type="image/avif">
+                <img loading="lazy" src="build/img/Logo.png" alt="Carnívoras Fest" class="logo">
+            </picture>
+        </a>
         <nav>
             <a href="#Que_es">¿Que es?</a>
             <a href="#Fechas">¿Fechas?</a>

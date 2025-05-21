@@ -1,0 +1,67 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+header {
+    background-color: rgba(v.$principal, 0.9);
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    @include m.flex(row, space-between, center);
+
+    .contenedor {
+        width: 100%;
+        @include m.flex(column, space-between, center);
+
+        @include m.tablet {
+            @include m.flex(row, space-between, center);
+        }
+    }
+
+    img {
+        width: 15rem;
+        margin-bottom: 2rem;
+
+        @include m.tablet {
+            margin-bottom: 0;
+        }
+    }
+
+    nav {
+        @include m.flex(column, center, center);
+        gap: 1rem;
+
+        @include m.tablet {
+            @include m.flex(row, flex-end, center);
+            gap: 1.5rem;
+        }
+
+        a {
+            color: v.$claro;
+            font-size: 1.8rem;
+            font-weight: bold;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -0.5rem;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: v.$iconos;
+                transition: width 0.3s ease;
+            }
+
+            &:hover {
+                color: v.$iconos;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+/* Tipografía */
+
+// Podemos importar fuentes personalizadas aquí
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+// Títulos
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+
+// Texto de párrafos
+p,
+ul,
+li {
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+// Clases de texto
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-italic {
+    font-style: italic;
+}

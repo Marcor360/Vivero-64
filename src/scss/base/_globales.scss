@@ -1,0 +1,96 @@
+@use "variables" as v;
+
+html {
+    font-size: 62.5%;
+    /* Reset para usar REM donde 1rem = 10px */
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    background-color: v.$claro;
+    color: v.$principal;
+}
+
+.contenedor {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: v.$principal;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: v.$iconos;
+    }
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 4rem;
+    color: v.$principal;
+
+    span {
+        color: v.$botones;
+        font-weight: bold;
+    }
+}
+
+h2 {
+    font-size: 3.2rem;
+    color: v.$principal;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+p {
+    margin: 0 0 1.5rem 0;
+}
+
+.titulo-seccion {
+    position: relative;
+    margin-bottom: 5rem;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 10rem;
+        height: 0.5rem;
+        background-color: v.$secundario;
+        margin: 1rem auto 0;
+    }
+}
